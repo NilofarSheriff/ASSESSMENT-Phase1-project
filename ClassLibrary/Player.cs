@@ -42,12 +42,22 @@ namespace ClassLibrary
             {
                 Console.Write("Enter Player Id:");
                 player.PlayerId = int.Parse(Console.ReadLine());
-                Console.Write("Enter Player Name:");
-                player.PlayerName = Console.ReadLine();
-                Console.Write("Enter Player Age:");
-                player.PlayerAge = int.Parse(Console.ReadLine());
-                oneDayTeam.Add(player);
-                Console.WriteLine("Player Added Sucessfully");
+                Player rem = oneDayTeam.Find(x => x.PlayerId == player.PlayerId);
+                if(rem== null)
+                {
+                    Console.Write("Enter Player Name:");
+                    player.PlayerName = Console.ReadLine();
+                    Console.Write("Enter Player Age:");
+                    player.PlayerAge = int.Parse(Console.ReadLine());
+                    oneDayTeam.Add(player);
+                    Console.WriteLine("Player Added Sucessfully");
+
+                }
+                else
+                {
+                    Console.WriteLine("Player Id already exists");
+                }
+                
                 
             }
             else
@@ -68,6 +78,7 @@ namespace ClassLibrary
                 Console.Write(rem.PlayerId + " ");
                 Console.Write(rem.PlayerName + " ");
                 Console.Write(rem.PlayerAge + " ");
+                
             }
             else
             {
